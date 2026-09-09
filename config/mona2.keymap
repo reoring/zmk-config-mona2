@@ -11,12 +11,6 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-#if defined(CONFIG_SHIELD_MONA2_R)
-&trackball_central {
-    cpi = <800>;
-};
-#endif
-
 &trackball_central_listener {
     // Overrides are evaluated in order: retain highest-layer precedence.
     bluetooth {
