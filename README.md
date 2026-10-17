@@ -57,13 +57,21 @@ roBaとはドライバーとスクロールの処理方式が異なるため、�
 `invert-x;` と `invert-y;` のコメントを外します。
 このリポジトリは標準版の向きを維持しています。実機の種類を確認して変更してください。
 
+### 左右方向が逆になる個体
+
+個体によってトラックボールの左右方向が逆になる場合は、右手用に
+`mona2_r_invert_x rgbled_adapter-seeeduino_xiao_ble-zmk.uf2` を書き込みます。
+`CONFIG_PMW3610_INVERT_X=y` でセンサー側のX軸を反転するため、FCLICK中の横スクロールも同じ向きで反転します。
+左手用UF2は共通です。個体ごとに標準版／X反転版の右手用UF2を使い分けてください。
+
 ## ビルドと書き込み
 
 `main`へのpushで [GitHub Actions](https://github.com/reoring/zmk-config-mona2/actions) が動作します。
 成功したビルドの `firmware` artifactに以下のファイルが含まれます。
 
 - `mona2_l rgbled_adapter-seeeduino_xiao_ble-zmk.uf2`：左手用
-- `mona2_r rgbled_adapter-seeeduino_xiao_ble-zmk.uf2`：右手用
+- `mona2_r rgbled_adapter-seeeduino_xiao_ble-zmk.uf2`：右手用（標準）
+- `mona2_r_invert_x rgbled_adapter-seeeduino_xiao_ble-zmk.uf2`：右手用（左右方向反転）
 - `settings_reset-seeeduino_xiao_ble-zmk.uf2`：保存設定のリセット用
 
 moNa2の各側をUSB接続し、リセットボタンを素早く2回押してブートローダーに入り、
