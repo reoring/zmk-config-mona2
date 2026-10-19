@@ -33,6 +33,12 @@
     };
 };
 
+// Game mode (toggled with G+J) is a layer above every other one, so combos
+// limited to the layers below it stay off while it is on.
+#define GAME 11
+#define GAME_NUM 12
+#define NON_GAME_LAYERS 0 1 2 3 4 5 6 7 8 9 10
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -48,30 +54,42 @@
         tab {
             bindings = <&kp TAB>;
             key-positions = <11 12>;
+            layers = <NON_GAME_LAYERS>;
         };
 
         shift_tab {
             bindings = <&kp LS(TAB)>;
             key-positions = <12 13>;
+            layers = <NON_GAME_LAYERS>;
         };
 
         muhennkann {
             bindings = <&kp INT_MUHENKAN>;
             key-positions = <11 10>;
+            layers = <NON_GAME_LAYERS>;
         };
 
         double_quotation {
             bindings = <&kp DOUBLE_QUOTES>;
             key-positions = <19 20>;
+            layers = <NON_GAME_LAYERS>;
         };
 
         eq {
             bindings = <&kp EQUAL>;
             key-positions = <23 24>;
+            layers = <NON_GAME_LAYERS>;
         };
         os_mode {
             bindings = <&tog 7>;
             key-positions = <12 18>;
+            timeout-ms = <100>;
+            slow-release;
+        };
+
+        game_mode {
+            bindings = <&tog GAME>;
+            key-positions = <14 17>;
             timeout-ms = <100>;
             slow-release;
         };
@@ -286,6 +304,28 @@
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        // Plain keys where a hold-tap would delay or swallow game input:
+        // Q (Tab), A (Ctrl), D (SLOW), F (FCLICK), Space (NUM), and the left
+        // thumb Shift (Muhenkan). Henkan opens GAME_NUM instead of layer 6.
+        GAME {
+            bindings = <
+&kp Q  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp A  &trans  &kp D  &kp F  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &mo GAME_NUM  &kp SPACE  &kp LEFT_SHIFT  &trans  &trans  &trans
+            >;
+        };
+
+        // Held Henkan in game mode: NUM's number row, and Esc on F as in layer 6.
+        GAME_NUM {
+            bindings = <
+&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0
+&trans  &trans  &trans  &kp ESC  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
