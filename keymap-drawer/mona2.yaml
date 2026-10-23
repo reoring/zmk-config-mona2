@@ -431,12 +431,12 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   BT_SELECT:
-  - {t: BT, h: '0'}
-  - {t: BT, h: '1'}
-  - {t: BT, h: '2'}
-  - {t: BT, h: '3'}
-  - {t: BT, h: '4'}
-  - {t: ▽, type: trans}
+  - '&bt_sel_ble'
+  - '&bt_sel_ble 1'
+  - '&bt_sel_ble 2'
+  - '&bt_sel_ble 3'
+  - '&bt_sel_ble 4'
+  - OUT USB
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
