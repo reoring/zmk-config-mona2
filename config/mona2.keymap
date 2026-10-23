@@ -1,5 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
@@ -94,6 +95,16 @@
             slow-release;
         };
 
+    };
+
+    macros {
+        // USB output takes priority over BLE while plugged in, so selecting a
+        // profile alone keeps typing into the USB host: switch output too.
+        bt_sel_ble: bt_sel_ble {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to2 &bt BT_SEL MACRO_PLACEHOLDER>, <&out OUT_BLE>;
+        };
     };
 
 
@@ -302,7 +313,7 @@
         };
         BT_SELECT {
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans
+&bt_sel_ble 0  &bt_sel_ble 1  &bt_sel_ble 2  &bt_sel_ble 3  &bt_sel_ble 4  &out OUT_USB  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
