@@ -66,6 +66,9 @@ MACレイヤーとは併用できます。
 通常時は800 CPI、SLOW中は入力を1/2にスケーリングします。
 FCLICK中はX/Y入力を横／縦ホイールへ変換し、1/16にスケーリングします。
 複数レイヤーが有効な場合の優先順位は、Bluetooth選択 > SLOW > FCLICKです。
+センサーは `force-awake` と `force-awake-4ms-mode` で省電力モードに入らず、4ms周期で読み取ります。
+透明ボールなど読み取りにくいボールでも、速い動きや動き出しを取りこぼしにくくするためです。
+その分、右手側の電池消費は増えます。
 
 センサー設定は `boards/shields/mona2/mona2_r.overlay`、
 レイヤー別の処理は `config/mona2.keymap` の `trackball_central_listener` で変更します。
