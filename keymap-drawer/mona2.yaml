@@ -575,6 +575,9 @@ combos:
 - p: [19, 20]
   k: '"'
   l: [default, NUM, FUNCTION, ARROW, MOUSE, SCROLL, '6', MAC, FCLICK, SLOW, BT_SELECT]
+- p: [10, 20]
+  k: Ctl+J
+  l: [default, NUM, FUNCTION, ARROW, MOUSE, SCROLL, '6', MAC, FCLICK, SLOW, BT_SELECT]
 - p: [23, 24]
   k: '='
   l: [default, NUM, FUNCTION, ARROW, MOUSE, SCROLL, '6', MAC, FCLICK, SLOW, BT_SELECT]
