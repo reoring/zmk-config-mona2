@@ -28,6 +28,7 @@
 | Delete | Delete | Bluetooth選択レイヤー |
 
 FCLICK中はJが左クリック、Kが中クリック、Lが右クリックです。
+変換を押しながらJでCtrl+J（SKKでかなモードへ）を送ります。A+'の同時押しでも同じです。
 Bluetooth選択レイヤーでは、左手上段の5キー(Q〜T)で接続先0〜4を選び、出力先をBluetoothに切り替えます。
 USBで接続中でも、選んだBluetooth接続先へ入力されます。
 USB接続先に戻すときは、Bluetooth選択レイヤーでYを押します。出力先の選択は電源を切っても保持されます。
