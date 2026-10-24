@@ -76,6 +76,13 @@
             layers = <NON_GAME_LAYERS>;
         };
 
+        // SKK's Ctrl+J without relying on A's Ctrl hold-tap timing.
+        skk_ctrl_j {
+            bindings = <&kp LC(J)>;
+            key-positions = <10 20>;
+            layers = <NON_GAME_LAYERS>;
+        };
+
         eq {
             bindings = <&kp EQUAL>;
             key-positions = <23 24>;
