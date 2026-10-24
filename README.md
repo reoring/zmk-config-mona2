@@ -31,6 +31,9 @@ FCLICK中はJが左クリック、Kが中クリック、Lが右クリックで�
 Bluetooth選択レイヤーでは、左手上段の5キー(Q〜T)で接続先0〜4を選び、出力先をBluetoothに切り替えます。
 USBで接続中でも、選んだBluetooth接続先へ入力されます。
 USB接続先に戻すときは、Bluetooth選択レイヤーでYを押します。出力先の選択は電源を切っても保持されます。
+右手（PCとつながる側）はBluetoothを1M PHYに固定しています（`CONFIG_BT_CTLR_PHY_2M=n`）。
+2M PHYでは、Intel製Bluetoothを積んだPC（linux-firmware 20260916）が2Mへ切り替えた直後にキーボードの電波を受け取れなくなり、
+約4秒で切断と再接続を繰り返しました。
 
 | 同時押し | 動作 |
 |---|---|
